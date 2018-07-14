@@ -17,13 +17,13 @@ MessageRepository.prototype.addObj = function(message, callback) {    // Adding 
 MessageRepository.prototype.updObj = function(id, message, callback) {
   var model = this.model;
   var query = model.findOneAndUpdate({_id: id}, {$set: {senderId: message.senderId, bodyMes: message.bodyMes, receiverId: message.receiverId}});
-  query.exec(query);
+  query.exec(callback);
 }
 
 MessageRepository.prototype.getMesOfSenderId = function(id, callback) {
     var model = this.model;
     var query = model.find({senderId: id});
-    query.exec(query);
+    query.exec(callback);
 }
 
 module.exports = new MessageRepository();

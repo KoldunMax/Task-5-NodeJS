@@ -21,7 +21,7 @@ function getById(id, callback) {
 function delObj(id, callback) {
   var model = this.model;
   var query = model.findOneAndDelete({_id: id});
-  query.exec(query);
+  query.exec(callback);
 }
 
 module.exports = Repository;

@@ -44,7 +44,7 @@ module.exports = {
 
     var userIds;
 
-      userService.findOne(id, (err, data) => {
+    findReceiversIds(id, (err, data) => {
             if (!err) {
                 userIds = data;
             } else {

@@ -17,7 +17,7 @@ UserRepository.prototype.addObj = function(user, callback) {    // Adding new us
 UserRepository.prototype.updObj = function(id, user, callback) {
   var model = this.model;
   var query = model.findOneAndUpdate({_id: id}, {$set: {name: user.name, email: user.email}});
-  query.exec(query);
+  query.exec(callback);
 }
 
 module.exports = new UserRepository();
