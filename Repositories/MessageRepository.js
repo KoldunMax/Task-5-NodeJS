@@ -22,7 +22,7 @@ MessageRepository.prototype.updObj = function(id, message, callback) {
 
 MessageRepository.prototype.getMesOfSenderId = function(id, callback) {
     var model = this.model;
-    var query = model.find({senderId: id});
+    var query = model.distinct("receiverId", {senderId: id})
     query.exec(callback);
 }
 
