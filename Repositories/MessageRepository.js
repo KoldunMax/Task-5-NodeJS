@@ -20,4 +20,10 @@ MessageRepository.prototype.updObj = function(id, message, callback) {
   query.exec(query);
 }
 
+MessageRepository.prototype.getMesOfSenderId = function(id, callback) {
+    var model = this.model;
+    var query = model.find({senderId: id});
+    query.exec(query);
+}
+
 module.exports = new MessageRepository();

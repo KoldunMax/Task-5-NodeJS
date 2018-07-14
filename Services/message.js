@@ -1,4 +1,7 @@
 const MessageRepository = require("../Repositories/MessageRepository");
+const userService = require("./user");
+
+
 
 module.exports = {
   findAll: callback => {
@@ -30,7 +33,24 @@ module.exports = {
         callback(err);
     })
   },
+
   findAllUsers: (id, callback) => {
-      
-  }
+
+    findReceiversIds = (id, callback) => {
+        MessageRepository.getMesOfSenderId(id, (err, data) => {
+            callback(err, data);
+        });;
+    }
+
+    var userIds;
+
+      userService.findOne(id, (err, data) => {
+            if (!err) {
+                userIds = data;
+            } else {
+                console.log("Error");
+            }
+        });
+    }
+
 };

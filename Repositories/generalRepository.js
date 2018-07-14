@@ -12,7 +12,7 @@ function getAll(callback) {
 
 function getById(id, callback) {
   var model = this.model;
-  var query = model.findOne({
+  var query = model.find({
     _id: id
   });
   query.exec(callback);
