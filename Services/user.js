@@ -24,10 +24,16 @@ module.exports = {
         callback(err);
       })
   },
-  
+
   findOneAndDelete: (id, callback) => {
     UserRepository.delObj(id, (err, data) => {
         callback(err);
+    })
+  },
+
+  findReceiversUsers: (array, callback) => {
+    UserRepository.getReceiversUsers(array, (err, dataUs) => {
+      callback(err, dataUs);
     })
   }
 };

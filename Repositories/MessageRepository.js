@@ -22,7 +22,7 @@ MessageRepository.prototype.updObj = function(id, message, callback) {
 
 MessageRepository.prototype.getMesOfSenderId = function(id, callback) {
     var model = this.model;
-    var query = model.distinct("receiverId", {senderId: id})
+    var query = model.aggregate([{$match: {senderId: id}},{$group: {_id: '$receiverId'}}, {$limit: 3}]);
     query.exec(callback);
 }
 

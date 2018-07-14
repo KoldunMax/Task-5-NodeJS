@@ -42,15 +42,23 @@ module.exports = {
         });;
     }
 
-    var userIds;
+    var recId = [];     // массив получателей
 
     findReceiversIds(id, (err, data) => {
             if (!err) {
-                userIds = data;
+                for(let i = 0; i < data.length; i++) {
+                    recId.push(data[i]._id);
+                }
+
+                userService.findReceiversUsers(recId, (err, dataUs) => {
+                    callback(err, dataUs);
+                })
+
             } else {
                 console.log("Error");
             }
         });
     }
+
 
 };
